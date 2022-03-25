@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { PokemonCard } from "./components/PokemonCard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [searchValue, setSearchValue] = useState<string>("");
+    console.log(searchValue);
+
+    const handleSubmit = () => {};
+
+    return (
+        <div className="App">
+            <h1>POKEMON APP</h1>
+            <form className="form">
+                <input
+                    type="text"
+                    placeholder="Pokemon name or #"
+                    className="search-box"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                />
+                <input
+                    className="search-button"
+                    placeholder="Enter your pokemon (name or number)"
+                    type="submit"
+                    value="Search"
+                    onSubmit={handleSubmit}
+                />
+            </form>
+            <PokemonCard searchValue={searchValue} />
+        </div>
+    );
 }
 
 export default App;
