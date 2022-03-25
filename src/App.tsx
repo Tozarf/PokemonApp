@@ -24,7 +24,7 @@ function App() {
                     placeholder="Enter your pokemon (name or number)"
                     type="submit"
                     value="Search"
-                    onSubmit={handleSubmit}
+                    // onSubmit={e=>handleSubmit(e)}
                 />
             </form>
             <PokemonCard searchValue={searchValue} />
