@@ -3,15 +3,17 @@ import "./App.css";
 import { PokemonCard } from "./components/PokemonCard";
 
 function App() {
-    const [searchValue, setSearchValue] = useState<string>("");
+    const [searchValue, setSearchValue] = useState("");
     console.log(searchValue);
-
-    const handleSubmit = () => {};
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        console.log("HandleSubmit", searchValue);
+    };
 
     return (
         <div className="App">
             <h1>POKEMON APP</h1>
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Pokemon name or #"
@@ -24,7 +26,6 @@ function App() {
                     placeholder="Enter your pokemon (name or number)"
                     type="submit"
                     value="Search"
-                    // onSubmit={e=>handleSubmit(e)}
                 />
             </form>
             <PokemonCard searchValue={searchValue} />

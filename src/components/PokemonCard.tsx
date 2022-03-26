@@ -4,16 +4,17 @@ import { PokeResponse } from "../interfaces/interface";
 import "./styles/PokemonCard.css";
 
 interface PokemonCardProps {
-    searchValue: string;
+    searchValue?: string;
 }
 
 export const PokemonCard = ({ searchValue }: PokemonCardProps) => {
     const [pokemon, setPokemon] = useState<PokeResponse>();
+    // console.log(searchValue);
 
     useEffect(() => {
         const getData = async () => {
-            const pokemon = await getPoke("ditto");
-            setPokemon(pokemon);
+            const fetchedPoke = await getPoke("ditto");
+            setPokemon(fetchedPoke);
         };
         getData();
     }, [pokemon]);
