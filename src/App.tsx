@@ -5,9 +5,9 @@ import { PokemonCard } from "./components/PokemonCard";
 function App() {
     const [searchValue, setSearchValue] = useState("");
     console.log(searchValue);
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log("HandleSubmit", searchValue);
     };
 
     return (
@@ -19,7 +19,7 @@ function App() {
                     placeholder="Pokemon name or #"
                     className="search-box"
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => setSearchValue(e.target.value.toLocaleLowerCase())}
                 />
                 <input
                     className="search-button"
@@ -28,7 +28,7 @@ function App() {
                     value="Search"
                 />
             </form>
-            <PokemonCard searchValue={searchValue} />
+            <PokemonCard searchValue={searchValue} setSearchValue={setSearchValue} />
         </div>
     );
 }
